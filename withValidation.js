@@ -9,7 +9,7 @@ export function withValidation(
 ) {
     return function(WrappedComponent) {
         const factory = React.createFactory(WrappedComponent);
-        class Wrapper extends React.Component {
+        class WithValidation extends React.Component {
             constructor(props) {
                 super(props);
 
@@ -108,11 +108,19 @@ export function withValidation(
             }
         }
 
-        Wrapper.childContextTypes = {
+        WithValidation.childContextTypes = {
             publish: PropTypes.func,
             submit: PropTypes.func
         };
 
-        return Wrapper;
+        WithValidation.displayName = `WithValidation(${getDisplayName(
+            WrappedComponent
+        )})`;
+
+        return WithValidation;
     };
+}
+
+function getDisplayName(WrappedComponent) {
+    return WrappedComponent.displayName || WrappedComponent.name || "Component";
 }
