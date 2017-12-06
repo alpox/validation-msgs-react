@@ -47,7 +47,7 @@ const validation = validate({
 });
 
 export default withValidation(validation, { username: "elias", password: "" })(
-  Form
+  FormComponent
 );
 ```
 

@@ -1,29 +1,24 @@
 {
-  "name": "validation-msgs-react",
-  "version": "0.0.1",
-  "description": "React validation helpers for validation-msgs",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alpox/validation-msgs-react.git"
-  },
-  "keywords": [
-    "form",
-    "validation",
-    "validation-msgs",
-    "react"
-  ],
-  "author": "Elias Bernhaut",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/alpox/validation-msgs-react/issues"
-  },
-  "homepage": "https://github.com/alpox/validation-msgs-react#readme",
-  "dependencies": {
-    "prop-types": "^15.6.0",
-    "react": "^16.2.0"
-  }
+    "name": "validation-msgs-react",
+    "version": "0.0.1",
+    "description": "React validation helpers for validation-msgs",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/alpox/validation-msgs-react.git"
+    },
+    "keywords": ["form", "validation", "validation-msgs", "react"],
+    "author": "Elias Bernhaut",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/alpox/validation-msgs-react/issues"
+    },
+    "homepage": "https://github.com/alpox/validation-msgs-react#readme",
+    "dependencies": {
+        "prop-types": "^15.6.0",
+        "react": "^16.2.0"
+    }
 }
