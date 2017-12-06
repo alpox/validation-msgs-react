@@ -90,3 +90,31 @@ following properties:
 * validationErrors - An object which is the result of the validation function
   you provided as first argument to `withValidation`
 * isValid - A boolean identifying the valid state of the form
+* updateFormData - A function for updating the form
+* resetFormData - A function for resetting the form
+
+## Update data
+
+In many cases you may want to initialize the form with empty values and fill the
+data for the form from an ajax request. To be able to update the data of the
+fields / form anytime you need, there is now the function `updateFormData`.
+
+To reset the fields, you can use `resetFormData`.
+
+### updateFormData(updates)
+
+> Returns a promise which resolves when the update took place.
+
+This method updates all properties given in the `updates` object. Be aware that
+this does not override the whole formData. It performs the equivalent of
+`Object.assign({}, formData, updates)` on the formData.
+
+```
+updateFormData({ username: "adam" })
+```
+
+### resetFormData()
+
+> Returns a promise which resolves when the reset took place.
+
+Resets the data of the form.

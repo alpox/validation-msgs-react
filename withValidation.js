@@ -24,6 +24,7 @@ export function withValidation(
                 this.acceptChange = this.acceptChange.bind(this);
                 this.formSubmit = this.formSubmit.bind(this);
                 this.updateFormData = this.updateFormData.bind(this);
+                this.resetFormData = this.resetFormData.bind(this);
             }
 
             // Validate the form with the new data
@@ -57,13 +58,40 @@ export function withValidation(
                 };
             }
 
+            /**
+             * This method is presented as prop to the wrapped component
+             * and resets the formData.
+             */
+            resetFormData() {
+                return new Promise(res => {
+                    this.setState({ formData: initialValues }, res);
+                });
+            }
+
+            /**
+             * This method is presented as prop to the component
+             * and updates the formData.
+             *
+             * @param {object} changes The changes to apply to the formData
+             */
             updateFormData(changes) {
-                const formData = Object.assign(
-                    {},
-                    this.state.formData,
-                    changes
-                );
-                this.setState({ formData });
+                if (
+                    changes === null ||
+                    typeof changes !== "object" ||
+                    Array.isArray(changes)
+                )
+                    throw new Error(
+                        "A non-object was given to updateFormData!"
+                    );
+
+                return new Promise(res => {
+                    const formData = Object.assign(
+                        {},
+                        this.state.formData,
+                        changes
+                    );
+                    this.setState({ formData }, res);
+                });
             }
 
             // Pass on props to wrapped component
@@ -73,7 +101,8 @@ export function withValidation(
                         validationErrors: this.state.errors,
                         formData: this.state.formData,
                         isValid: this.state.isValid,
-                        updateFormData: this.updateFormData
+                        updateFormData: this.updateFormData,
+                        resetFormData: this.resetFormData
                     })
                 );
             }
